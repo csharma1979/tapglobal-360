@@ -1,0 +1,117 @@
+.company-page {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  .company-banner {
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    padding: 100px 0;
+    margin-top: 0;
+      // Removed margin-top since header should handle spacing
+
+    .container {
+      text-align: center;
+      color: white;
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .vision-mission {
+    padding: 80px 0;
+    background: #f8f9fa;
+
+    .vision-mission-grid {
+      gap: 40px;  // Increased gap
+
+      .vision-box, .mission-box {
+        padding: 40px;  // Adjusted padding
+        
+        h2 {
+          margin-bottom: 2rem;
+          padding-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+
+  .section-grid {
+    padding: 80px 0;
+    gap: 60px;  // Adjusted gap
+
+    .content {
+      padding: 0 20px;  // Added padding
+    }
+  }
+
+  .values-section {
+    padding: 80px 0;
+
+    h2 {
+      margin-bottom: 4rem;  // Increased margin
+    }
+
+    .values-grid {
+      gap: 30px;
+      padding: 0 20px;  // Added padding
+
+      .value-card {
+        padding: 30px;  // Increased padding
+      }
+    }
+  }
+
+  .impact-section {
+    padding: 80px 0;
+
+    h2 {
+      margin-bottom: 4rem;  // Increased margin
+    }
+
+    .impact-stats {
+      padding: 20px 0;  // Added padding
+    }
+  }
+
+  .experts {
+    margin-top: 0;  // Removed margin
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-page {
+    .container {
+      padding: 0 20px;
+    }
+
+    .company-banner {
+      padding: 60px 0;
+    }
+
+    .vision-mission, .section-grid, .values-section, .impact-section, .experts {
+      padding: 60px 0;
+    }
+
+    .vision-mission-grid {
+      grid-template-columns: 1fr !important;  // Stack on mobile
+    }
+
+    .section-grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+    }
+  }
+}

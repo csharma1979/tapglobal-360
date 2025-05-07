@@ -1,0 +1,133 @@
+.blog-detail-page {
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #333;
+
+  .breadcrumb-section {
+    background-color: #f9f9f9;
+    padding: 1rem 0;
+
+    .breadcrumb {
+      font-size: 0.9rem;
+      color: #666;
+
+      a {
+        color: #0070f3;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      span {
+        margin: 0 0.3rem;
+      }
+    }
+  }
+
+  .blog-content {
+    padding: 2rem 0;
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      .main-content {
+        max-width: 800px;
+        margin: 0 auto;
+
+        .blog-header {
+          text-align: center;
+
+          h1 {
+            font-size: 2.5rem;
+            margin: 1.5rem 0;
+            color: #222;
+          }
+
+          .meta-info {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: #777;
+
+            span {
+              display: flex;
+              align-items: center;
+              gap: 0.4rem;
+            }
+          }
+
+          .blog-hero-image {
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+          }
+        }
+
+        .blog-article {
+          margin-top: 2rem;
+          line-height: 1.7;
+          font-size: 1.1rem;
+
+          p {
+            margin-bottom: 1.5rem;
+          }
+
+          h2,
+          h3,
+          h4 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #222;
+          }
+
+          ul,
+          ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+          }
+
+          a {
+            color: #0070f3;
+            text-decoration: underline;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .tags-section {
+          margin-top: 3rem;
+
+          h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+          }
+
+          .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            .tag {
+              background-color: #e0e0e0;
+              padding: 0.4rem 0.8rem;
+              border-radius: 20px;
+              font-size: 0.85rem;
+              color: #444;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .loading {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.2rem;
+    color: #888;
+  }
+}

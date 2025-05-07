@@ -1,0 +1,76 @@
+.scrolling-banner {
+  position: relative;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+  margin-top: 80px;
+
+  .banner-container {
+    display: flex;
+    animation: scroll 15s linear infinite;
+
+    .banner-item {
+      min-width: 100%;
+      height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      padding: 2rem;
+
+      &:nth-child(1) { background: linear-gradient(to right, #1e3c72, #2a5298); }
+      &:nth-child(2) { background: linear-gradient(to right, #2a5298, #1e3c72); }
+      &:nth-child(3) { background: linear-gradient(to right, #1e3c72, #2a5298); }
+
+      .banner-content {
+        text-align: center;
+        max-width: 800px;
+
+        h1 {
+          font-size: 4rem;
+          margin-bottom: 1.5rem;
+          animation: fadeInUp 0.5s ease;
+        }
+
+        p {
+          font-size: 1.5rem;
+          margin-bottom: 2rem;
+          opacity: 0.9;
+          animation: fadeInUp 0.7s ease;
+        }
+
+        .cta-button {
+          padding: 1rem 2rem;
+          font-size: 1.2rem;
+          background: transparent;
+          border: 2px solid white;
+          color: white;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          animation: fadeInUp 0.9s ease;
+
+          &:hover {
+            background: white;
+            color: #1e3c72;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-300%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

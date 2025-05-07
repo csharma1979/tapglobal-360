@@ -1,0 +1,139 @@
+.experts {
+  padding: 80px 0;
+  background: #fff;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .experts-header {
+    text-align: center;
+    margin-bottom: 60px;
+    
+    h2 {
+      font-size: 2.5rem;
+      color: #1e3c72;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+  }
+  
+  .experts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .expert-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+    }
+    
+    .expert-image {
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover img {
+        transform: scale(1.05);
+      }
+    }
+    
+    .expert-info {
+      padding: 1.5rem;
+      
+      h3 {
+        font-size: 1.4rem;
+        color: #1e3c72;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      
+      h4 {
+        font-size: 1.1rem;
+        color: #2a5298;
+        margin-bottom: 0.75rem;
+      }
+      
+      p {
+        color: #666;
+        margin-bottom: 1.25rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      
+      .expert-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .profile-link {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: #0077b5; /* Blue background color */
+        color: white; /* White text color */
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: #005885;
+          transform: translateY(-2px);
+        }
+      }
+      
+      .linkedin-icon-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        svg {
+          width: 24px;
+          height: 24px;
+          fill: #0077b5; /* Blue LinkedIn icon */
+          transition: all 0.3s ease;
+          
+          &:hover {
+            fill: #005885;
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .experts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .experts-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+}
