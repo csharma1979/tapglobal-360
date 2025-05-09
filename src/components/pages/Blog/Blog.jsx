@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Header from "../../layout/Header/Header";
-import Footer from "../../layout/Footer/Footer";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -148,7 +148,7 @@ const Blog = () => {
         </div>
       </div>
 
-      <Footer />
+    
     </div>
   );
 };

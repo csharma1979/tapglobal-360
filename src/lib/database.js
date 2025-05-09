@@ -1,25 +1,19 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
-const Identity = require("../Models/Identity");
-
-
-console.log(process.env.MONGODB_URL, "process.env.MONGODB_URL");
-
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import Identity from "../Models/Identity.js";
+ 
 const dbConnect = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("A2Zhome-solutions DB Connected successfully");
+    await mongoose.connect(process.env.MONGODB_URL);
+    console.log("Tap-Global 360 DB Connected successfully");
     await createHardcodedUsers();
   } catch (error) {
-    console.log("A2Zhome-solutions DB  Connection Failed");
+    console.log("Tap-Global 360 DB  Connection Failed");
     console.error(error);
     process.exit(1);
   }
 };
-
+ 
 const createHardcodedUsers = async () => {
   try {
     // Check if the user already exists
@@ -30,7 +24,7 @@ const createHardcodedUsers = async () => {
       console.log("User already exists. Skipping hardcoded user creation.");
       return;
     }
-
+ 
     const users = [
       {
         firstname: "Tap",
@@ -39,7 +33,7 @@ const createHardcodedUsers = async () => {
         password: "Rishi@2468", // Store the hashed password
       },
     ];
-
+ 
     // Insert the hardcoded user into the collection
     await Identity.insertMany(users);
     console.log("Hardcoded users inserted!");
@@ -47,5 +41,5 @@ const createHardcodedUsers = async () => {
     console.error("Error inserting users: ", error);
   }
 };
-
+ 
 export default dbConnect;
