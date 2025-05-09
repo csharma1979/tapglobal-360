@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import dbConnect from "../../../../src/lib/database"; // path of db connection 
-import Blog from "../../../../src/Models/Blog/BlogModal"; //path of blog db
+import dbConnect from "../../../../lib/database"; 
+import Blog from "../../../../Models/Blog/BlogModal"; //path of blog db
 import fs from "fs";
 import path from "path";
 import https from "https";
