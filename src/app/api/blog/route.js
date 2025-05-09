@@ -6,11 +6,7 @@ import path from "path";
 import slugify from "slugify";
 import fs from "fs/promises";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
