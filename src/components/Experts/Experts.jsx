@@ -32,14 +32,6 @@ const Experts = () => {
       profilePath: "/roger-patry"
     },
     {
-      name: "Pankaj Gupta",
-      designation: "CTO",
-      description: "Technology Leadership & Innovation",
-      image: "/assets/pankaj.webp",
-      linkedin: "https://www.linkedin.com/in/pankajgupta73/",
-      profilePath: "/pankaj-gupta"
-    },
-    {
       name: "Jay Sanghvi",
       designation: "Strategic Planning Lead",
       description: "Six Sigma Black Belt | Strategic Planner | Supply Chain Expert", 
