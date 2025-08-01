@@ -75,12 +75,6 @@ const Home = () => {
       image: "/assets/jay.webp",
       profilePath: "/jay-sanghvi"
     },
-    {
-      name: "Pankaj Gupta",
-      role: "Digital Strategy",
-      image: "/assets/pankaj.webp",
-      profilePath: "/pankaj-gupta"
-    },
 
   ];
 
