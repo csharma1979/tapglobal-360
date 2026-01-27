@@ -18,6 +18,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const getExcerpt = (html, wordCount) => {
     const plainText = html.replace(/<[^>]+>/g, ""); // Remove HTML tags
@@ -29,10 +30,15 @@ const Blog = () => {
 
   const getBlogs = async () => {
     try {
+      setLoading(true);
       const blogsData = await fetchBlogs();
-      setBlogs(blogsData);
+      // Ensure blogsData is an array, if not, default to empty array
+      setBlogs(Array.isArray(blogsData) ? blogsData : []);
     } catch (error) {
       console.error("Error fetching blogs:", error);
+      setBlogs([]); // Set to empty array on error
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,7 +56,9 @@ const Blog = () => {
     "Artifical Intelligence",
   ];
 
-  const filteredPosts = blogs.filter((post) => {
+  // Ensure blogs is an array before filtering
+  const blogsArray = Array.isArray(blogs) ? blogs : [];
+  const filteredPosts = blogsArray.filter((post) => {
     const title = post.blogTopic || "";
     const excerpt = getExcerpt(post.blogDescription || "", 20);
     const category = post.blogCategory || "";
@@ -110,7 +118,12 @@ const Blog = () => {
           </div>
 
           <div className="blog-grid">
-            {filteredPosts.map((post) => (
+            {loading ? (
+              <div className="loading">Loading blogs...</div>
+            ) : filteredPosts.length === 0 ? (
+              <div className="no-blogs">No blogs found.</div>
+            ) : (
+              filteredPosts.map((post) => (
               <Link
               href={`/blog-details/${post.slug}`}
                 className="blog-card"
@@ -143,7 +156,8 @@ const Blog = () => {
                   </div>
                 </div>
               </Link>
-            ))}
+            ))
+            )}
           </div>
         </div>
       </div>

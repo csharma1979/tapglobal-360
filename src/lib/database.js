@@ -3,19 +3,26 @@ import dotenv from "dotenv";
 import Identity from "../Models/Identity.js";
 import bcrypt from "bcrypt";
  
+let cachedConnection = null;
+
 const dbConnect = async () => {
+  if (cachedConnection) {
+    return cachedConnection;
+  }
+
   try {
-    await mongoose.connect(process.env.MONGODB_URL, {
+    const connection = await mongoose.connect(process.env.MONGODB_URL, {
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
       bufferCommands: false, // Disable mongoose buffering
     });
     console.log("Tap-Global 360 DB Connected successfully");
     await createHardcodedUsers();
+    cachedConnection = connection;
+    return connection;
   } catch (error) {
     console.log("Tap-Global 360 DB  Connection Failed");
     console.error(error);
-    // Don't exit the process, just log the error
-    // process.exit(1);
+    throw error; // Re-throw the error so it can be handled by the caller
   }
 };
  
