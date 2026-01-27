@@ -45,7 +45,6 @@ const Footer = () => {
             <h4>Contact Us</h4>
             <ul className="contact-info">
               <li>Email: support@tapglobal.com</li>
-              <li>Phone: +1 (555) 123-4567</li>
               <li>Address: 123 Business Avenue<br />New York, NY 10001</li>
             </ul>
           </div>

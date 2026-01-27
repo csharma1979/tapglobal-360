@@ -1,30 +1,12 @@
-import ContactForm from "../../../Models/Contact/Contact";
 import nodemailer from "nodemailer";
-import dbConnect from "../../../lib/database";
 import { NextResponse } from "next/server";
 
-// POST - Submit contact form request and send email
+// POST - Submit contact form request and send email (no DB saving)
 export const POST = async (req) => {
   try {
-    await dbConnect(); // Ensure DB connection
-
     const body = await req.json();
 
     const { firstname, lastname, email, phoneno, countryCode, message, formType } = body;
-
-    // console.log("Received Data:", { firstname, lastname, email, phoneno, countryCode, message, formType });
-
-    // Save to MongoDB
-    const formData = new ContactForm({
-      firstname,
-      lastname,
-      email,
-      phoneNo: phoneno,
-      countryCode,
-      message,
-      formType,
-    });
-    await formData.save();
 
     // Send an email
     const transporter = nodemailer.createTransport({
@@ -60,15 +42,10 @@ export const POST = async (req) => {
   }
 };
 
-// GET - Fetch all contact form submissions
+// GET - Disabled for static site (no database operations)
 export const GET = async () => {
-  try {
-    await dbConnect(); // Ensure connection to the DB
-    const contactForms = await ContactForm.find();
-
-    return NextResponse.json(contactForms);
-  } catch (error) {
-    console.log(error, "An error occurred while fetching the contact forms");
-    return NextResponse.json({ error: "An error occurred while fetching the contact forms." });
-  }
+  return NextResponse.json(
+    { message: "Contact form submissions are not stored in static mode" },
+    { status: 405 }
+  );
 };

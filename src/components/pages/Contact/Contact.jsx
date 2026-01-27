@@ -72,13 +72,13 @@ const Contact = () => {
               <div className="contact-card">
                 <FiPhone className="contact-icon" />
                 <h3>CALL 24/7</h3>
-                <a href="tel:+18323125501">+1-832-312-5501</a>
+                <p>Contact us via email or form</p>
               </div>
 
               <div className="contact-card">
                 <FiMail className="contact-icon" />
                 <h3>MORE INFO</h3>
-                <a href="mailto:support@tapglobal360.com">support@tapglobal360.com</a>
+                <a href="mailto:tapglobal360@gmail.com">tapglobal360@gmail.com</a>
               </div>
 
               <div className="contact-card clickable" onClick={handleDirectionsClick}>

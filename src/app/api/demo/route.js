@@ -1,13 +1,9 @@
-import DemoForm from "../../../Models/Demo/Demo";
 import nodemailer from "nodemailer";
-import dbConnect from "../../../lib/database";
 import { NextResponse } from "next/server";
 
-// POST - Submit demo form request and send email
+// POST - Submit demo form request and send email (no DB saving)
 export const POST = async (req) => {
   try {
-    await dbConnect();
-
     const body = await req.json();
 
     const {
@@ -31,19 +27,6 @@ export const POST = async (req) => {
       message,
       formType,
     });
-
-    // Save to MongoDB
-    const formData = new DemoForm({
-      firstname,
-      lastname,
-      email,
-      companyName,
-      phoneNo: phoneno,
-      countryCode,
-      message,
-      formType,
-    });
-    await formData.save();
 
     // Send an email
     const transporter = nodemailer.createTransport({
@@ -84,17 +67,10 @@ export const POST = async (req) => {
   }
 };
 
-// GET - Fetch all demo form submissions
+// GET - Disabled for static site (no database operations)
 export const GET = async () => {
-  try {
-    await dbConnect(); // Ensure connection to the DB
-    const demoForms = await DemoForm.find();
-
-    return NextResponse.json(demoForms);
-  } catch (error) {
-    console.log(error, "An error occurred while fetching the demo forms");
-    return NextResponse.json({
-      error: "An error occurred while fetching the demo forms.",
-    });
-  }
+  return NextResponse.json(
+    { message: "Demo form submissions are not stored in static mode" },
+    { status: 405 }
+  );
 };
