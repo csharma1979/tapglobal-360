@@ -12,10 +12,16 @@ export async function POST(req) {
     const result = await loginUser(email, password);
 
     // Return a successful response
-    if (result.token) {
-      return NextResponse.json({ token: result.token });
+    if (result.success && result.token) {
+      return NextResponse.json({ 
+        token: result.token,
+        user: result.user
+      });
     } else {
-      return NextResponse.json({ message: result.message }, { status: 401 });
+      return NextResponse.json(
+        { message: result.message }, 
+        { status: 401 }
+      );
     }
   } catch (error) {
     console.error("Error in login route:", error);

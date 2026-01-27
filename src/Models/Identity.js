@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const identitySchema = new mongoose.Schema(
   {
@@ -26,5 +26,4 @@ const identitySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.models.Identity || mongoose.model("Identity", identitySchema);
-//module.exports = mongoose.model("Identity", identitySchema);
+export default mongoose.models.Identity || mongoose.model("Identity", identitySchema);
