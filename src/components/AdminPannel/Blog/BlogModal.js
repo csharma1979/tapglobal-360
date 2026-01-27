@@ -2,12 +2,18 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { IoMdClose } from "react-icons/io";
-import { Editor } from "@toast-ui/react-editor";
+import dynamic from 'next/dynamic';
 import "@toast-ui/editor/dist/toastui-editor.css";
 import {
   saveBlog,
   updateBlog,
 } from "../../../lib/services/BlogService/BlogsService";
+
+// Dynamically import the Editor component with SSR disabled
+const Editor = dynamic(
+  () => import('./ToastUIEditorWrapper'),
+  { ssr: false }
+);
 
 const BlogModal = ({ onCloseModal, onBlogSave, editBlog }) => {
   const editorRef = useRef();
@@ -22,9 +28,13 @@ const BlogModal = ({ onCloseModal, onBlogSave, editBlog }) => {
   });
 
   const handleDescriptionChange = () => {
-    const editorInstance = editorRef.current.getInstance();
-    const description = editorInstance.getHTML();
-    setBlogData({ ...blogData, blogDescription: description });
+    if (editorRef.current && typeof editorRef.current.getInstance === 'function') {
+      const editorInstance = editorRef.current.getInstance();
+      if (editorInstance && typeof editorInstance.getHTML === 'function') {
+        const description = editorInstance.getHTML();
+        setBlogData({ ...blogData, blogDescription: description });
+      }
+    }
   };
 
   const handleChange = (e) => {
@@ -48,9 +58,17 @@ const BlogModal = ({ onCloseModal, onBlogSave, editBlog }) => {
         status: editBlog.status || "Draft",
       };
       setBlogData(initialData);
-      if (editorRef.current) {
-        editorRef.current.getInstance().setHTML(editBlog.blogDescription || "");
-      }
+      
+      // Delay setting HTML to ensure editor is loaded
+      setTimeout(() => {
+        if (editorRef.current && typeof editorRef.current.getInstance === 'function') {
+          try {
+            editorRef.current.getInstance().setHTML(editBlog.blogDescription || "");
+          } catch (error) {
+            console.warn('Could not set editor content:', error);
+          }
+        }
+      }, 100);
     }
   }, [editBlog]);
 
@@ -140,7 +158,6 @@ const BlogModal = ({ onCloseModal, onBlogSave, editBlog }) => {
 
           <Editor
             ref={editorRef}
-            initialValue="Write something amazing..."
             previewStyle="vertical"
             height="200px"
             initialEditType="wysiwyg"

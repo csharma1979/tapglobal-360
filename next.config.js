@@ -6,6 +6,19 @@ const nextConfig = {
   sassOptions: {
     includePaths: ['./app'],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    
+    // Handle commonjs modules
+    config.externals.push('canvas')
+    
+    return config;
+  },
 }
 
 module.exports = nextConfig
