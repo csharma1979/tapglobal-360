@@ -8,7 +8,6 @@ const dbConnect = async () => {
     await mongoose.connect(process.env.MONGODB_URL, {
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
       bufferCommands: false, // Disable mongoose buffering
-      bufferMaxEntries: 0, // Disable mongoose buffering
     });
     console.log("Tap-Global 360 DB Connected successfully");
     await createHardcodedUsers();
