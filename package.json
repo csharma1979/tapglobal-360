@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "cross-env PORT=30003 next dev",
     "build": "next build",
-    "start": "cross-env PORT=30003 next dev",
+    "start": "NODE_ENV=production node server.js",
+    "start:dev": "cross-env PORT=30003 next dev",
     "lint": "next lint"
   },
   "dependencies": {
