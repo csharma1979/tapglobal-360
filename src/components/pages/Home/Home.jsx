@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Header from '../../layout/Header/Header';
-import Footer from '../../layout/Footer/Footer';
 import './Home.scss';
 
 const Home = () => {
@@ -192,7 +190,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <Header />
       
       {/* Banner Section */}
       {/* Banner Section */}

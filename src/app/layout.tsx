@@ -27,7 +27,6 @@ export default function RootLayout({ children }) {
           content="Your trusted partner for home solutions"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={inter.className}>
         <Suspense fallback={<div>Loading...</div>}>

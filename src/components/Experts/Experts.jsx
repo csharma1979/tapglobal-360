@@ -17,16 +17,16 @@ const Experts = () => {
     },
     {
       name: "Scott Wilkins",
-      designation: "Global CEO",
-      description: "Execution & Financial Results Driven | SPAC & M&A Strategist | Industrial Sector Veteran",
+      //designation: "Global CEO",
+      description: "Driving Growth Through Strategic Business Development",
       image: "/assets/scott.webp",
       linkedin: "https://www.linkedin.com/in/scott-wilkins-3b420162/",
       profilePath: "/scott-wilkins"
     },
     {
       name: "Roger Patry",
-      designation: "Global CEO",
-      description: "Execution & Financial Results Driven | SPAC & M&A Strategist | Industrial Sector Veteran",
+      //designation: "Global CEO",
+      description: "Visionary Leader in Innovative Packaging Solutions",
       image: "/assets/roger.webp",
       linkedin: "https://www.linkedin.com/in/roger-patry-3b202661/",
       profilePath: "/roger-patry"

@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['tapglobal360.com'],
+    unoptimized: true, // Disable Next.js image optimization for Apache Passenger
+    domains: ['tapglobal360.com', 'localhost', '127.0.0.1'],
   },
   sassOptions: {
     includePaths: ['./app'],
